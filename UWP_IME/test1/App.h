@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+ 
 #include "pch.h"
 #include "Common\DeviceResources.h"
 #include "template1Main.h"

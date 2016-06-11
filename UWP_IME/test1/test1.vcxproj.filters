@@ -104,6 +104,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="template1_TemporaryKey.pfx" />
-    <None Include="readme.md" />
   </ItemGroup>
 </Project>

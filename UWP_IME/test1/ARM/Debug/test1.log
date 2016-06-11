@@ -1,2 +1,0 @@
-﻿  pch.cpp
-e:\work\vc\uwp_ime\test1\pch.h(17): fatal error C1083: include ファイルを開けません。'D2DContextNew.h':No such file or directory
