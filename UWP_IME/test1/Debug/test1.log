@@ -1,0 +1,9 @@
+﻿  pch.cpp
+  App.cpp
+  DeviceResources.cpp
+  D2DContext.cpp
+  D2DTextbox.cpp
+  D2DUniversalControl.cpp
+  template1Main.cpp
+  test1.vcxproj -> E:\work\github\uwp\UWP_IME\Debug\test1\test1.exe
+  test1.vcxproj -> E:\work\github\uwp\UWP_IME\Debug\test1\test1.pdb (Partial PDB)
