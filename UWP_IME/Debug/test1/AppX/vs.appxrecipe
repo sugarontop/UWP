@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>FURUYA</Machine>
+    <WindowsUser>furuya</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Debug|Win32</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <PackageIdentityName>cec1a34f-3f39-46c2-be9b-cefb06922f46</PackageIdentityName>
+    <IntermediateOutputPath>E:\work\vc\UWP_IME\test1\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>665F2C08D8D9B52510F623EC81F6EC7CA0B79970E3181FE057E8B32A5A18C1E0</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>cec1a34f-3f39-46c2-be9b-cefb06922f46_1.0.0.0_x86__e82mzceqwpxe6</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>cec1a34f-3f39-46c2-be9b-cefb06922f46_e82mzceqwpxe6!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>cec1a34f-3f39-46c2-be9b-cefb06922f46</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=furuya</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="E:\work\vc\UWP_IME\Debug\test1\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-11T07:27:40.936</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\Debug\test1\test1.exe">
+      <PackagePath>test1.exe</PackagePath>
+      <Modified>2016-06-12T03:01:02.979</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\Debug\test1\test1.winmd">
+      <PackagePath>test1.winmd</PackagePath>
+      <Modified>2016-06-11T07:27:40.404</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\test1\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2016-06-07T03:28:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\test1\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-07T03:28:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\test1\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-07T03:28:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\test1\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-07T03:28:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\test1\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-07T03:28:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\test1\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-07T03:28:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\test1\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-07T03:28:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10240.0\\redist\Debug\x86\ucrtbased.dll">
+      <PackagePath>ucrtbased.dll</PackagePath>
+      <Modified>2015-07-09T13:33:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\work\vc\UWP_IME\Debug\test1\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2016-06-11T07:27:40.827</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.23918.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.23918.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.23918.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.23918.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.23918.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.23918.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

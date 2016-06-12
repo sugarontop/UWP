@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="共通">
+      <UniqueIdentifier>f9347be9-4175-4b00-b70f-df4867b12ff9</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資産">
+      <UniqueIdentifier>33f7258c-2df6-4452-bff4-cf8548b9579e</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <Filter Include="コンテンツ">
+      <UniqueIdentifier>4d30d866-c023-4531-be48-0866f0c17644</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="Common\DirectXHelper.h">
+      <Filter>共通</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\StepTimer.h">
+      <Filter>共通</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DeviceResources.h">
+      <Filter>共通</Filter>
+    </ClInclude>
+    <ClCompile Include="Common\DeviceResources.cpp">
+      <Filter>共通</Filter>
+    </ClCompile>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>資産</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="template1Main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Content\D2DContext.cpp">
+      <Filter>コンテンツ</Filter>
+    </ClCompile>
+    <ClCompile Include="Content\D2DUniversalControl.cpp">
+      <Filter>コンテンツ</Filter>
+    </ClCompile>
+    <ClCompile Include="Content\D2DTextbox.cpp">
+      <Filter>コンテンツ</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h" />
+    <ClInclude Include="template1Main.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Content\D2DContext.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\D2DUniversalControl.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comptr.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\D2DCommon.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\D2DContextNew.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\D2DMisc.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d2dwin.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\faststack.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DateTime.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\fstring.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gdi32.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="template1_TemporaryKey.pfx" />
+  </ItemGroup>
+</Project>
