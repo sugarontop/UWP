@@ -1,15 +1,14 @@
-UWP IME sample 
+# UWP IME sample 
 
 2016/06 
 
-Single line only.
-
 UWP (DirectX11 application)
+
+Direct2D
 
 using namespace Windows::UI::Text::Core;
 
-Directg2D
-
+Single line only, with IME.
 
 NO XAML
 
@@ -17,9 +16,12 @@ Windows10 japanese
 
 VisualStudio2015
 
+> initial controls
 
-void template1Main::OnInitail()
-{
+<pre>
+
+void template1Main::OnInitail() 
+ {
 	//
 	// Create Window controls. Button.
 	// 
@@ -50,5 +52,9 @@ void template1Main::OnInitail()
 
 	rcTextbox.Offset(0, 120);
 	auto* t2 = new D2DTextbox(*imebridge_);
+
 	t2->Create(this, this, rcTextbox, 0, L"noname");
 }
+
+
+</pre>
