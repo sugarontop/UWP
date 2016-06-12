@@ -301,8 +301,6 @@ void template1::App::OnLayoutRequested(Windows::UI::Text::Core::CoreTextEditCont
 	{
 		auto rc = imeBridge_.info_->rcTextbox;
 
-		imeBridge_.UpdateText( rc.Size());
-
 		int spos = args->Request->Range.StartCaretPosition;
 		int epos = args->Request->Range.EndCaretPosition;
 		
@@ -405,6 +403,9 @@ void template1::App::OnTextUpdating(Windows::UI::Text::Core::CoreTextEditContext
 
 		imeBridge_.info_->text = str3;
 		imeBridge_.info_->decoration_end_pos = min( (int)str3.length(), imeBridge_.info_->decoration_end_pos);
+
+		auto rc = imeBridge_.info_->rcTextbox;
+		imeBridge_.UpdateText(rc.Size());
 
 		TRACE( L"add %s->%s len=%d\n", c, str3.c_str(), append_len);
 	}
