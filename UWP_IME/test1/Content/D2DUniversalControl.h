@@ -82,9 +82,8 @@ class D2DTextbox : public D2DControl
 	protected :
 		void Activate();
 		void UnActivate();
-		void DrawCaret(D2DContext& cxt);
+		void DrawSelectArea(D2DContext& cxt);
 
-		float MesureSingleText( D2DContext& cxt, int pos );
 		
 	protected :
 		TYP typ_;

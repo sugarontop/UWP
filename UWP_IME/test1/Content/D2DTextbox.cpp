@@ -102,7 +102,10 @@ int D2DTextbox::WndProc(D2DWindow* d, int message, int wp, Windows::UI::Core::IC
 				cxt.cxt->DrawText( str,  ti_.decoration_start_pos, cxt.cxtt.textformat, rca, cxt.black );
 
 				FRectF rcb(rca);
-				rcb.Offset( MesureSingleText(cxt, ti_.decoration_start_pos ), 0 );
+				FRectF* rcc = ti_.rcChar.get();
+				rcb.Offset(rcc[ti_.decoration_start_pos].left, 0);
+
+				
 
 				auto clr = cxt.red;
 				
@@ -115,13 +118,12 @@ int D2DTextbox::WndProc(D2DWindow* d, int message, int wp, Windows::UI::Core::IC
 
 
 				cxt.cxt->DrawText( str+ti_.decoration_start_pos,  ti_.decoration_end_pos-ti_.decoration_start_pos, cxt.cxtt.textformat, rcb, clr );
+				rca.Offset(rcc[ti_.decoration_end_pos].left, 0);
 
-				rca.Offset( MesureSingleText(cxt, ti_.decoration_end_pos ), 0 );
 				cxt.cxt->DrawText( str+ti_.decoration_end_pos,  len-ti_.decoration_end_pos, cxt.cxtt.textformat, rca, cxt.black );
-
 			}
 
-			DrawCaret( cxt );
+			DrawSelectArea( cxt );
 
 
 			mat.PopTransform();
@@ -284,41 +286,32 @@ void D2DTextbox::UnActivate()
 {
 	bridge_.UnActivate();
 }
-void D2DTextbox::DrawCaret(D2DContext& cxt)
-{	
-	FRectF rca(0,0,2,60);
+void D2DTextbox::DrawSelectArea(D2DContext& cxt)
+{
+	if ( ti_.text.length() == 0 )
+	{
+		FRectF rcb(0,0,2,20);
+		cxt.cxt->FillRectangle(rcb, cxt.black);
+		return;
+	}
 
-	float ypos = 0;
-	float xpos = MesureSingleText( cxt, ti_.sel_start_pos );
+	FRectF rc1 = ti_.rcChar.get()[ti_.sel_start_pos];
+	FRectF rc2 = ti_.rcChar.get()[ti_.sel_end_pos - 1];
+
 
 	D2DMatrix mat(cxt);
 	mat.PushTransform();
-	mat.Offset(xpos, ypos);
 
-	if ( ti_.sel_start_pos == ti_.sel_end_pos )
-		cxt.cxt->DrawRectangle( rca, cxt.black );
-	else
-	{
-		float xpos2 = MesureSingleText( cxt, ti_.sel_end_pos );
+	FRectF rca(rc1.left, rc1.top, rc2.right, rc2.bottom);
 
-		rca.right = rca.left + ( xpos2-xpos );
-		cxt.cxt->FillRectangle( rca, cxt.halftone );
-	}
+	if (ti_.sel_start_pos < ti_.sel_end_pos) 
+		cxt.cxt->FillRectangle(rca, cxt.halftone);
+
+	rca.left = rca.right -2;
+	cxt.cxt->FillRectangle(rca, cxt.black);
+
 
 	mat.PopTransform();
 }
-float D2DTextbox::MesureSingleText(D2DContext& cxt, int pos )
-{
-	if ( pos == 0 ) return 0;
 
-	ComPTR<IDWriteTextLayout> temp;
-
-	cxt.cxtt.wfactory->CreateTextLayout( ti_.text.c_str(), ti_.text.length(), cxt.cxtt.textformat, rc_.Width(), rc_.Height(), &temp );
-
-	DWRITE_HIT_TEST_METRICS tm; // posにある文字の情報、文字列情報ではない
-	float x1=0,y1=0;
-	temp->HitTestTextPosition( pos, false, &x1,&y1,&tm);
-	
-	return tm.left;
-}
 

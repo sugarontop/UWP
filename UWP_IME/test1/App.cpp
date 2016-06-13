@@ -449,6 +449,11 @@ void template1::App::OnCompositionCompleted(Windows::UI::Text::Core::CoreTextEdi
 
 	imeBridge_.CompositionCompleted();
 	m_main->redraw_ = true;
+
+	auto rc = imeBridge_.info_->rcTextbox;
+	imeBridge_.UpdateText(rc.Size());
+
+
 	TRACE( L"OnCompositionCompleted\n" );
 
 }
