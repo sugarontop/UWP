@@ -476,17 +476,16 @@ void D2DTextbox::DrawSelectArea(D2DContext& cxt)
 {	
 	if ( ti_.sel_start_pos >= ti_.sel_end_pos ) return;
 
-	FRectF rc1 = ti_.rcChar.get()[ti_.sel_start_pos];
-	FRectF rc2 = ti_.rcChar.get()[ti_.sel_end_pos-1];
-
-
 	D2DMatrix mat(cxt);
 	mat.PushTransform();
 	
-	FRectF rca( rc1.left, rc1.top, rc2.right, rc2.bottom );
-		
-	
-	cxt.cxt->FillRectangle( rca, cxt.halftone );
+	FRectF* prc = ti_.rcChar.get();
+
+	for( int i = ti_.sel_start_pos; i < ti_.sel_end_pos; i++ )
+	{
+		FRectF rca = prc[i];
+		cxt.cxt->FillRectangle( rca, cxt.halftone );
+	}
 	
 
 	mat.PopTransform();
