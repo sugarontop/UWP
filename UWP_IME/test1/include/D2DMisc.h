@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////
+ï»¿///////////////////////////////////////////////////////////////////////
 //
 // (C) Copyright 2015, admin@sugarontop.net
 //
@@ -13,7 +13,7 @@ using namespace D2D1;
 #pragma warning(disable: 4482)
 
 #define ROUND(x) ((int)(x+0.5f))
-#define D2RGBA(r,g,b,a) ColorF(r/255.0f, g/255.0f, b/255.0f, a/255.0f ) //  ”–‚¢(0) <- A <- ”Z‚¢(255)
+#define D2RGBA(r,g,b,a) ColorF(r/255.0f, g/255.0f, b/255.0f, a/255.0f ) //  è–„ã„(0) <- A <- æ¿ƒã„(255)
 #define D2RGB(r,g,b) ColorF(r/255.0f, g/255.0f, b/255.0f, 1.0f )
 
 //
@@ -47,7 +47,13 @@ class FSizeF : public D2D1_SIZE_F
 		{
 			width = (FLOAT)sz.width; height=(FLOAT)sz.height;
 		}	
-		
+#if (WINAPI_FAMILY == WINAPI_FAMILY_PC_APP )
+		FSizeF(const Windows::Foundation::Size& sz)
+		{
+			width = sz.Width;
+			height = sz.Height;
+		}
+#endif	
 		FSizeF( LPARAM lParam )
 		{
 			width = (FLOAT)LOWORD(lParam); height = (FLOAT)HIWORD(lParam);
@@ -88,6 +94,20 @@ class FPointF : public D2D1_POINT_2F
 		{
 			x = LOWORD(lParam); y = HIWORD(lParam);
 		}
+#if (WINAPI_FAMILY == WINAPI_FAMILY_PC_APP )
+		FPointF(Windows::Foundation::Point pt)
+		{
+			x = pt.X;
+			y = pt.Y;
+		}
+		FPointF(Windows::UI::Core::ICoreWindowEventArgs^ lp)
+		{
+			Windows::UI::Core::PointerEventArgs^ arg = (Windows::UI::Core::PointerEventArgs^)lp;
+			x = arg->CurrentPoint->Position.X;
+			y = arg->CurrentPoint->Position.Y;
+
+		}
+#endif
 		
 		POINT GetPOINT()
 		{
@@ -414,7 +434,7 @@ class FRectF : public D2D1_RECT_F
 };
 
 
-// ü•‚ª‚P‚Â‚É§ŒÀ‚µ‚Ä‚¢‚éˆÈŠO‚ÍAHTML‚Ìƒ{ƒbƒNƒXƒ‚ƒfƒ‹‚Æ“¯‚¶B
+// ç·šå¹…ãŒï¼‘ã¤ã«åˆ¶é™ã—ã¦ã„ã‚‹ä»¥å¤–ã¯ã€HTMLã®ãƒœãƒƒã‚¯ã‚¹ãƒ¢ãƒ‡ãƒ«ã¨åŒã˜ã€‚
 class FRectFBoxModel : public FRectF
 {
 	public :

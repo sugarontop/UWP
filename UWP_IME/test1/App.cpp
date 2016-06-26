@@ -405,7 +405,7 @@ void template1::App::OnTextUpdating(Windows::UI::Text::Core::CoreTextEditContext
 		imeBridge_.info_->decoration_end_pos = min( (int)str3.length(), imeBridge_.info_->decoration_end_pos);
 
 		auto rc = imeBridge_.info_->rcTextbox;
-		imeBridge_.UpdateText(rc.Size());
+		imeBridge_.UpdateTextRect(rc.Size());
 
 		TRACE( L"add %s->%s len=%d\n", c, str3.c_str(), append_len);
 	}
@@ -451,7 +451,7 @@ void template1::App::OnCompositionCompleted(Windows::UI::Text::Core::CoreTextEdi
 	m_main->redraw_ = true;
 
 	auto rc = imeBridge_.info_->rcTextbox;
-	imeBridge_.UpdateText(rc.Size());
+	imeBridge_.UpdateTextRect(rc.Size());
 
 
 	TRACE( L"OnCompositionCompleted\n" );

@@ -108,3 +108,34 @@ int D2DButton::WndProc(D2DWindow* d, int message, int wp, Windows::UI::Core::ICo
 	}
 	return ret;
 }
+////////////////////////////////////
+FontInfo::FontInfo() :forecolor(ColorF::Black), backcolor(ColorF::White)
+{
+	height = 12;
+	fontname = L"メイリオ";
+	weight = 400;
+}
+
+ComPTR<IDWriteTextFormat> FontInfo::CreateFormat(IDWriteFactory* wfac) const
+{
+	_ASSERT(wfac);
+
+	ComPTR<IDWriteTextFormat> fmt;
+
+
+	//DWRITE_FONT_WEIGHT_LIGHT;
+
+
+	wfac->CreateTextFormat(
+		fontname,
+		nullptr,
+		(DWRITE_FONT_WEIGHT) weight,
+		DWRITE_FONT_STYLE_NORMAL,
+		DWRITE_FONT_STRETCH_NORMAL,
+		height,
+		DEFAULTLOCALE,
+		&fmt
+	);
+
+	return fmt;
+}

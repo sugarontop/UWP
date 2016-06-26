@@ -12,7 +12,7 @@ using namespace V4;
 namespace template1
 {
 	
-	class template1Main : public DX::IDeviceNotify, D2DWindow, D2DControls
+	class template1Main : public DX::IDeviceNotify, public D2DMainWindow
 	{
 	public:
 		template1Main(const std::shared_ptr<DX::DeviceResources>& deviceResources, D2CoreTextBridge* br );
@@ -25,10 +25,11 @@ namespace template1
 		virtual void OnDeviceLost();
 		virtual void OnDeviceRestored();
 
-		virtual int WndProc(D2DWindow* parent, int message, int wp, Windows::UI::Core::ICoreWindowEventArgs^ lp);
+		
 		virtual D2DContext* cxt(){ return &cxt_; }
-		bool redraw_;
+	
 
+		virtual DX::DeviceResources* GetResource() { return m_deviceResources.get(); }
 		
 	protected :
 		void OnDraw(D2DContext& cxt);
@@ -41,7 +42,7 @@ namespace template1
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
 
 		
-		D2DContext cxt_;
+		
 		D2CoreTextBridge* imebridge_;
 		
 	};

@@ -52,6 +52,12 @@
     <ClCompile Include="Content\D2DTextbox.cpp">
       <Filter>コンテンツ</Filter>
     </ClCompile>
+    <ClCompile Include="Content\Caret.cpp">
+      <Filter>コンテンツ</Filter>
+    </ClCompile>
+    <ClCompile Include="Content\D2DMainWindow.cpp">
+      <Filter>コンテンツ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />

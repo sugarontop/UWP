@@ -219,7 +219,9 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
+    <ClCompile Include="Content\Caret.cpp" />
     <ClCompile Include="Content\D2DContext.cpp" />
+    <ClCompile Include="Content\D2DMainWindow.cpp" />
     <ClCompile Include="Content\D2DTextbox.cpp" />
     <ClCompile Include="Content\D2DUniversalControl.cpp" />
     <ClCompile Include="template1Main.cpp" />

@@ -30,6 +30,16 @@ template1Main::template1Main(const std::shared_ptr<DX::DeviceResources>& deviceR
 
 	OnInitail();
 
+
+	Windows::Foundation::TimeSpan tm;
+	tm.Duration = (10 * 1000) * 5000; // 5秒
+
+	auto tmdelegate = [this](Windows::System::Threading::ThreadPoolTimer^ timer)
+	{
+		AliveMetor(timer);
+	};
+	ThreadPoolTimer::CreatePeriodicTimer(ref new TimerElapsedHandler(tmdelegate), tm);
+
 }
 
 void template1Main::OnInitail()
@@ -65,6 +75,10 @@ void template1Main::OnInitail()
 	rcTextbox.Offset(0, 120);
 	auto* t2 = new D2DTextbox(*imebridge_);
 	t2->Create(this, this, rcTextbox, 0, L"noname");
+
+
+	t1->SetText( L"This is textbox with IME.");
+	t2->SetText(L"ここはtextbox。");
 }
 
 
@@ -111,70 +125,4 @@ void template1Main::OnDeviceRestored()
 	cxt_.CreateRenderTargetResource(m_deviceResources->GetD2DDeviceContext());
 	
 }
-
-
-int template1Main::WndProc(D2DWindow* parent, int msg, INT_PTR wp, Windows::UI::Core::ICoreWindowEventArgs^ lp)
-{
-	switch( msg )
-	{		
-		case WM_PAINT:
-		{
-			ID2D1DeviceContext* context = m_deviceResources->GetD2DDeviceContext();
-			Windows::Foundation::Size logicalSize = m_deviceResources->GetLogicalSize();
-
-			context->SaveDrawingState( cxt_.m_stateBlock);
-			context->BeginDraw();
-			D2D1_MATRIX_3X2_F mat = Matrix3x2F::Identity();
-
-			ID2D1DeviceContext* cxt = context;
-			cxt->SetTransform(mat);
-			cxt->Clear(ColorF(ColorF::White));
-
-
-			for( auto& it : controls_ )
-				it->WndProc(this, WM_PAINT,0,nullptr);
-
-			
-
-			//D2DERR_RECREATE_TARGET をここで無視します。このエラーは、デバイスが失われたことを示します。
-			// これは、Present に対する次回の呼び出し中に処理されます。
-			HRESULT hr = context->EndDraw();
-			if (hr != D2DERR_RECREATE_TARGET)
-			{
-				DX::ThrowIfFailed(hr);
-			}
-
-			context->RestoreDrawingState(cxt_.m_stateBlock);
-
-
-			redraw_ = false;
-			return 0;
-		}
-		break;
-		case WM_LBUTTONDOWN:
-		case WM_LBUTTONUP:
-		case WM_KEYDOWN:
-		case WM_KEYUP:
-		case WM_CHAR:
-
-			redraw_ = true;
-
-			for (auto& it : controls_)
-				it->WndProc(this, msg, wp, lp);
-
-			
-		break;
-
-		default:
-			for (auto& it : controls_)
-				it->WndProc(this, msg, wp, lp);
-		break;
-	}
-
-
-	
-
-	return 0;
-}
-
 
