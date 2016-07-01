@@ -2,43 +2,11 @@
 #include "D2DContext.h"
 #include "Common/DirectXHelper.h"
 
-using namespace Windows::Storage;
-using namespace Windows::UI::Core;
-using namespace Windows::Storage::Pickers;
-using namespace Windows::Data::Xml::Dom;
-using namespace Windows::Web::Http;
-using namespace concurrency;
-using namespace Windows::Web;
-
-using namespace Windows::Foundation;
-
 using namespace V4;
 
-
-SingletonD2DInstance& SingletonD2DInstance::Init()
+void D2DContext::Init(const std::shared_ptr<DX::DeviceResources>& deviceResources)
 {
-	static SingletonD2DInstance st;
-
-	if (st.factory.p == NULL)
-	{
-		D2D1_FACTORY_OPTIONS options;
-		options.debugLevel = D2D1_DEBUG_LEVEL_NONE;
-		//THROWIFFAILED(D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, __uuidof(ID2D1Factory1), &options, (void**) &st.factory), L"SingletonD2DInstance::Init()");
-		//THROWIFFAILED(DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory1), reinterpret_cast<IUnknown**>(&st.wrfactory)), L"SingletonD2DInstance::Init()");
-		//THROWIFFAILED(st.wrfactory->CreateTextFormat(DEFAULTFONT, 0, DWRITE_FONT_WEIGHT_NORMAL, DWRITE_FONT_STYLE_NORMAL, DWRITE_FONT_STRETCH_NORMAL, DEFAULTFONT_HEIGHT, L"", &st.text), L"SingletonD2DInstance::Init()");
-	}
-	return st;
-
-
-}
-void D2DContext::Init(SingletonD2DInstance& ins, const std::shared_ptr<DX::DeviceResources>& deviceResources)
-{
-	insins = &ins;
 	m_deviceResources = deviceResources;
-
-
-	ins.wrfactory = m_deviceResources->GetDWriteFactory();
-	ins.factory = m_deviceResources->GetD2DFactory();
 
 	m_deviceResources->GetDWriteFactory()->CreateTextFormat(
 		L"Segoe UI",
@@ -48,24 +16,20 @@ void D2DContext::Init(SingletonD2DInstance& ins, const std::shared_ptr<DX::Devic
 		DWRITE_FONT_STRETCH_NORMAL,
 		32.0f,
 		L"en-US",
-		&ins.text
+		&text
 	);
-	
-	ins.factory->CreateDrawingStateBlock(&m_stateBlock); 
 
-
-	this->cxt = deviceResources->GetD2DDeviceContext();
-	
-	cxtt.textformat = ins.text;
-	cxtt.wfactory = ins.wrfactory;
 }
 void D2DContext::CreateRenderTargetResource(ID2D1RenderTarget* rt)
 {
-	// D2DWindow::CreateD2DWindowのタイミングで実行
-	// D2DWindow::WM_SIZEのタイミングで実行
+	cxt = rt;
 
+	ComPTR<ID2D1Factory> fac;
+	rt->GetFactory(&fac);
+	fac->CreateDrawingStateBlock(&m_stateBlock);
 
-	
+	cxtt.textformat = text;
+	cxtt.wfactory = m_deviceResources->GetDWriteFactory();
 
 	rt->CreateSolidColorBrush(D2RGB(0, 0, 0), &black);
 	rt->CreateSolidColorBrush(D2RGB(255, 255, 255), &white);
@@ -80,23 +44,10 @@ void D2DContext::CreateRenderTargetResource(ID2D1RenderTarget* rt)
 
 	rt->CreateSolidColorBrush(D2RGBA(255, 242, 0, 255), &tooltip);
 
-	// DestroyRenderTargetResourceを忘れないこと
+	// DeviceLost時にこれらすべてReleaseしなければならない
 }
 void D2DContext::DestroyRenderTargetResource()
 {
-/*	UINT a = cxt.p->AddRef() - 1;
-	cxt.p->Release();
-	_ASSERT(a == 1);
-
-	cxt.Release();
-#ifdef USE_ID2D1DEVICECONTEXT
-	a = dxgiSwapChain.p->AddRef() - 1;
-	dxgiSwapChain.p->Release();
-	_ASSERT(a == 1);
-
-	dxgiSwapChain.Release();
-#endif
-*/
 	ltgray.Release();
 	black.Release();
 	white.Release();
@@ -108,4 +59,6 @@ void D2DContext::DestroyRenderTargetResource()
 	halftoneRed.Release();
 	tooltip.Release();
 
+	cxt.Release();
+	m_stateBlock.Release();
 }

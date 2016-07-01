@@ -119,6 +119,7 @@ class D2DButton : public D2DControl
 		virtual int WndProc(D2DWindow* parent, int message, int wp, Windows::UI::Core::ICoreWindowEventArgs^ lp);
 
 		int mode_;
+		std::function<void(D2DButton*)> OnClick_;
 
 };
 class Caret

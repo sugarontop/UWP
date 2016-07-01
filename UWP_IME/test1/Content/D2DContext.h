@@ -7,26 +7,11 @@ namespace V4
 	struct D2DContextBase
 	{
 		ComPTR<ID2D1RenderTarget>  cxt;
-		IDWriteTextFormat* text;
-		IDWriteFactory* wfactory;
+		ComPTR<IDWriteTextFormat> text;
+		ComPTR<IDWriteFactory> wfactory;
 	};
 
-
-	// SingletonD2DInstanceは独立した存在なので、HWNDに関わるリソースはもたない。
-	struct SingletonD2DInstance
-	{
-		ComPTR<IDWriteFactory> wrfactory;
-		ComPTR<ID2D1Factory>  factory;
-		ComPTR<IDWriteTextFormat> text; // IDWriteTextFormat1 is from Win8.1.
-
-		static SingletonD2DInstance& Init();
-
-	};
-
-#define STOCKSIZE 16
 	struct D2DContext;
-
-
 
 	struct D2DContextText
 	{
@@ -46,20 +31,6 @@ namespace V4
 	};
 	struct D2DContext : public D2DContextBase
 	{
-		/*
-		struct D2DContextBase
-		{
-		ComPTR<ID2D1RenderTarget>  cxt;
-		IDWriteTextFormat* text;
-		IDWriteFactory* wfactory;
-		};
-		*/
-
-
-
-		SingletonD2DInstance* insins;
-
-
 		operator ID2D1RenderTarget*() const { return cxt.p; }
 #ifdef USE_ID2D1DEVICECONTEXT
 		ComPTR<IDXGISwapChain1> dxgiSwapChain;
@@ -81,7 +52,6 @@ namespace V4
 		ComPTR<ID2D1StrokeStyle> dot2_;
 		ComPTR<ID2D1DrawingStateBlock>  m_stateBlock;
 
-		ComPTR<ID2D1Factory> factory() { return insins->factory; }
 		D2DContextText cxtt;
 
 		LPVOID free_space;
@@ -89,7 +59,7 @@ namespace V4
 		//void Init(SingletonD2DInstance& ins, HWND hWnd);
 		void Destroy();
 
-		void Init(SingletonD2DInstance& ins, const std::shared_ptr<DX::DeviceResources>& deviceResources);
+		void Init(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 
 
 		void CreateResourceOpt();
@@ -180,7 +150,8 @@ namespace V4
 			//General access denied error 0x80070005 
 		}
 	};
-#define THROWIFFAILED(hr,msg) ThrowIfFailed(hr,msg, __LINE__, __FILE__)
+	
+	#define THROWIFFAILED(hr,msg) ThrowIfFailed(hr,msg, __LINE__, __FILE__)
 
 
 
@@ -313,7 +284,7 @@ namespace V4
 		-+---+---+---+
 
 		Position 0 is 0 left side.
-		Position 1 is 1 left side.
+		Position 3 is 3 left side.
 		Position 10 is 10 left side.
 
 		*/

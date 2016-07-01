@@ -28,15 +28,6 @@ void D2DControl::InnerCreateWindow(D2DWindow* parent, D2DControls* pacontrol, co
 		parent_control_->controls_.push_back(std::shared_ptr<D2DControl>(this));
 	}
 
-	//if (stat_ & DROPACCEPTOR)
-	//{
-	//	parent->drag_accepters_.push_back(this);
-
-	//	stat_ &= ~DROPACCEPTOR;
-	//}
-
-	//	CHDL id = parent_->chandle_.CreateControlHandle( this );
-	//	chdl_ = id;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,10 +91,15 @@ int D2DButton::WndProc(D2DWindow* d, int message, int wp, Windows::UI::Core::ICo
 			mode_ = 0;
 
 			if ( rc_.PtInRect(pt3 ))
+			{
 				mode_ = 1;
+				if (OnClick_)
+					OnClick_(this);
+			}
 
 		}
 		break;
+		
 
 	}
 	return ret;
@@ -121,10 +117,6 @@ ComPTR<IDWriteTextFormat> FontInfo::CreateFormat(IDWriteFactory* wfac) const
 	_ASSERT(wfac);
 
 	ComPTR<IDWriteTextFormat> fmt;
-
-
-	//DWRITE_FONT_WEIGHT_LIGHT;
-
 
 	wfac->CreateTextFormat(
 		fontname,

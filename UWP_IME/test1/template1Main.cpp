@@ -19,9 +19,7 @@ template1Main::template1Main(const std::shared_ptr<DX::DeviceResources>& deviceR
 	// デバイスが失われたときや再作成されたときに通知を受けるように登録します
 	m_deviceResources->RegisterDeviceNotify(this);
 
-
-	static V4::SingletonD2DInstance ins;
-	cxt_.Init(ins, m_deviceResources );
+	cxt_.Init(m_deviceResources);
 	cxt_.CreateRenderTargetResource(m_deviceResources->GetD2DDeviceContext());
 
 	
@@ -60,7 +58,12 @@ void template1Main::OnInitail()
 	b1 = new D2DButton();
 	b1->CreateButton(this, this, rc, 0, L"noname");
 
+	b1->OnClick_ = [this](D2DButton*)
+	{
+		// TEST 
 
+		this->GetResource()->HandleDeviceLost(); // Force Device Lost
+	};
 	
 	_ASSERT(imebridge_ != nullptr );
 
