@@ -191,7 +191,7 @@ protected:
 	int shift_control_key_;
 	ColorF back_, fore_;
 
-
+	static bool bMouseSelectMode_;
 };
 
 };

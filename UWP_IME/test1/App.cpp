@@ -295,27 +295,32 @@ Windows::Foundation::Rect ClientToScreen( FRectF rc )
 	return r;	
 }
 
-void template1::App::OnLayoutRequested(Windows::UI::Text::Core::CoreTextEditContext ^sender,Windows::UI::Text::Core::CoreTextLayoutRequestedEventArgs ^args)
+void template1::App::OnLayoutRequested(Windows::UI::Text::Core::CoreTextEditContext ^sender, Windows::UI::Text::Core::CoreTextLayoutRequestedEventArgs ^args)
 {
-	if ( imeBridge_.info_ )
+	// candidateの表示位置
+	if (imeBridge_.info_)
 	{
 		auto rc = imeBridge_.info_->rcTextbox;
+		auto rc2 = Caret::GetCaret().GetCaretRect();
+
+		rc.bottom = rc2.bottom;
 
 		int spos = args->Request->Range.StartCaretPosition;
 		int epos = args->Request->Range.EndCaretPosition;
-		
-		if ( spos > 0 )
-		{
-			FRectF rcChar = imeBridge_.info_->rcChar.get()[spos-1];
-			rc.Offset( rcChar.right, 0 );
-		}
-						
-		args->Request->LayoutBounds->ControlBounds = ClientToScreen(imeBridge_.info_->rcTextbox);
-		args->Request->LayoutBounds->TextBounds = ClientToScreen(rc);
 
-		TRACE(L"OnLayoutRequested %d-%d\n", args->Request->Range.StartCaretPosition, args->Request->Range.EndCaretPosition);
+		if (spos > 0)
+		{
+			FRectF rcChar = imeBridge_.info_->rcChar().get()[spos - 1];
+			rc.Offset(rcChar.right, 0);
+		}
+
+		args->Request->LayoutBounds->ControlBounds = ClientToScreen(imeBridge_.info_->rcTextbox);
+		args->Request->LayoutBounds->TextBounds = ClientToScreen(rc);// candidate window position
+
+		TRACE(L"OnLayoutRequested %d-%d  top=%f,bottom=%f\n", args->Request->Range.StartCaretPosition, args->Request->Range.EndCaretPosition, rc.top, rc.bottom);
 	}
 }
+
 
 
 void template1::App::OnSelectionRequested(Windows::UI::Text::Core::CoreTextEditContext ^sender,Windows::UI::Text::Core::CoreTextSelectionRequestedEventArgs ^args)
@@ -419,8 +424,6 @@ void template1::App::OnFormatUpdating(Windows::UI::Text::Core::CoreTextEditConte
 
 	int typ = (int)args->UnderlineType->Value;
 
-	//if ( args->UnderlineType == Windows::UI::Text::UnderlineType::Wave )
-	//	typ = 1;
 	
 	if ( imeBridge_.info_ )
 	{
@@ -449,10 +452,6 @@ void template1::App::OnCompositionCompleted(Windows::UI::Text::Core::CoreTextEdi
 
 	imeBridge_.CompositionCompleted();
 	m_main->redraw_ = true;
-
-	auto rc = imeBridge_.info_->rcTextbox;
-	imeBridge_.UpdateTextRect(rc.Size());
-
 
 	TRACE( L"OnCompositionCompleted\n" );
 

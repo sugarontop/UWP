@@ -158,6 +158,7 @@ namespace V4
 	
 	struct TextInfo
 	{
+		friend class D2CoreTextBridge;
 		TextInfo()
 		{
 			sel_start_pos = sel_end_pos = 0;
@@ -171,7 +172,10 @@ namespace V4
 		FRectF rcTextbox;
 		int line_cnt;
 
-		std::shared_ptr<FRectF> rcChar;
+		std::shared_ptr<FRectF> rcChar()
+		{
+			return rcChar_;
+		}
 		int rcCharCnt;
 
 		int decoration_start_pos;
@@ -180,6 +184,20 @@ namespace V4
 
 		ComPTR<IDWriteFactory> wfac_;
 		ComPTR<IDWriteTextFormat> fmt_;
+
+		void clear()
+		{
+			line_cnt = 0;
+			rcChar_.reset();
+			rcCharCnt = 0;
+
+			sel_start_pos = sel_end_pos = 0;
+			decoration_start_pos = decoration_end_pos = 0;
+			decoration_typ = 0;
+		}
+
+	private:
+		std::shared_ptr<FRectF> rcChar_;
 	};
 
 
@@ -283,9 +301,9 @@ namespace V4
 		7| 8 | 9 |10 |
 		-+---+---+---+
 
-		Position 0 is 0 left side.
-		Position 3 is 3 left side.
-		Position 10 is 10 left side.
+		Position 0 is left side of 0.
+		Position 3 is left side of 3.
+		Position 10 is left side of 10.
 
 		*/
 		void UpdateTextRect(FSizeF rcMaxText)
@@ -294,20 +312,20 @@ namespace V4
 
 			if (len == 0)
 			{
-				info_->line_cnt = 0;
-				info_->rcChar.reset();
+				info_->clear();
 				return;
 			}
 
 			ComPTR<IDWriteTextLayout> layout;
 
 			info_->wfac_->CreateTextLayout(info_->text.c_str(), len, info_->fmt_, rcMaxText.width, rcMaxText.height, &layout);
-			info_->rcChar = std::shared_ptr<FRectF>(new FRectF[len], std::default_delete<FRectF []>());
+			info_->rcChar_ = std::shared_ptr<FRectF>(new FRectF[len], std::default_delete<FRectF []>());
 
-			FRectF* prc = info_->rcChar.get();
+			FRectF* prc = info_->rcChar_.get();
 			FRectF rc;
 
 			info_->line_cnt = 1;
+			info_->rcCharCnt = len;
 			float prtop = 0;
 
 			for (int i = 0; i < len; i++)
@@ -318,7 +336,7 @@ namespace V4
 
 				rc.SetRect(tm.left, tm.top, tm.left + tm.width, tm.top + tm.height);
 
-				if (rc.Width() == 0)
+				if (rc.Width() == 0 && info_->text[i] == L'\n')
 				{
 					rc.Offset(0, rc.Height());
 					rc.left = rc.right = 0;
@@ -332,10 +350,7 @@ namespace V4
 					prtop = rc.top;
 				}
 			}
-
-			info_->rcCharCnt = len;
-
-			::OutputDebugString(FString::Format(L"UpdateTextRect len=%d linecnt=%d\n", len, info_->line_cnt).c_str());
+			//::OutputDebugString( FString::Format(L"UpdateTextRect len=%d linecnt=%d\n", len, info_->line_cnt ).c_str());
 		}
 
 		TextInfo* info_;

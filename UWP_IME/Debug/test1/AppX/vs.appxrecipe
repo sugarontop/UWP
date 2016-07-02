@@ -33,7 +33,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\Debug\test1\test1.exe">
       <PackagePath>test1.exe</PackagePath>
-      <Modified>2016-07-01T12:42:49.939</Modified>
+      <Modified>2016-07-02T03:12:46.448</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\Debug\test1\test1.winmd">
       <PackagePath>test1.winmd</PackagePath>
