@@ -19,7 +19,7 @@ VisualStudio2015
 
 2016/08
 
-Windows10 japanese (build 1607)
+Windows10 japanese Update 1607 (Build 14393)
 
 > initial
 
