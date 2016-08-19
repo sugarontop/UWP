@@ -16,10 +16,14 @@ Windows10 japanese
 
 VisualStudio2015
 
-> initial controls
+
+2016/08
+
+Windows10 japanese (build 1607)
+
+> initial
 
 <pre>
-
 void template1Main::OnInitail() 
  {
 	//
