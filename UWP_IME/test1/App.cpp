@@ -334,12 +334,17 @@ void template1::App::OnTextRequested(Windows::UI::Text::Core::CoreTextEditContex
 {
 	if ( imeBridge_.info_ )
 	{
+		std::wstring& s = imeBridge_.info_->text;
 
-		LPCWSTR stra = imeBridge_.info_->text.c_str();
-		args->Request->Text = ref new Platform::String( stra );
+		int start = args->Request->Range.StartCaretPosition;
+		int end = min( args->Request->Range.EndCaretPosition, (int)s.length());
+
+		std::wstring s2 = s.substr( start, end-start );
+		
+		args->Request->Text = ref new Platform::String( s2.c_str() );
 				
 
-		TRACE( L"OnTextRequested, %s\n", stra );
+		TRACE( L"OnTextRequested, %s\n", s2.c_str() );
 	}
 }
 

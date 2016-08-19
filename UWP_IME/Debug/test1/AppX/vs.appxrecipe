@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>FURUYA</Machine>
+    <Machine>FURUYA-PC</Machine>
     <WindowsUser>furuya</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -15,7 +15,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>050C84F63C10F6D6992634D8CB81810D12B5AD809D94A627B9DF8A7ED865DAEB</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>E1C18373BC45C80C15F4380228C7B12E9C4E9E78AD3870E3FBAF188A7CC3D318</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>cec1a34f-3f39-46c2-be9b-cefb06922f46_1.0.0.0_x86__e82mzceqwpxe6</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>cec1a34f-3f39-46c2-be9b-cefb06922f46_e82mzceqwpxe6!App</RegisteredUserModeAppID>
     <RegisteredPackageID>cec1a34f-3f39-46c2-be9b-cefb06922f46</RegisteredPackageID>
@@ -27,51 +27,51 @@
     <AppXManifest Include="E:\work\github\UWP\UWP_IME\Debug\test1\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-07-01T12:42:50.320</Modified>
+      <Modified>2016-08-19T04:01:12.245</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\Debug\test1\test1.exe">
       <PackagePath>test1.exe</PackagePath>
-      <Modified>2016-07-02T03:12:46.448</Modified>
+      <Modified>2016-08-19T04:01:11.228</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\Debug\test1\test1.winmd">
       <PackagePath>test1.winmd</PackagePath>
-      <Modified>2016-07-01T12:42:49.886</Modified>
+      <Modified>2016-08-19T04:00:01.682</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\test1\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2016-06-26T11:44:42.981</Modified>
+      <Modified>2016-08-19T04:00:02.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\test1\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-26T11:44:42.982</Modified>
+      <Modified>2016-08-19T04:00:02.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\test1\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-26T11:44:42.983</Modified>
+      <Modified>2016-08-19T04:00:02.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\test1\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-26T11:44:42.983</Modified>
+      <Modified>2016-08-19T04:00:02.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\test1\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-26T11:44:42.985</Modified>
+      <Modified>2016-08-19T04:00:02.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\test1\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-26T11:44:42.985</Modified>
+      <Modified>2016-08-19T04:00:02.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\test1\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-26T11:44:42.986</Modified>
+      <Modified>2016-08-19T04:00:02.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10240.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -79,7 +79,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\work\github\UWP\UWP_IME\Debug\test1\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-07-01T12:42:50.230</Modified>
+      <Modified>2016-08-19T04:01:12.014</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
